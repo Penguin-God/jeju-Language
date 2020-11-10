@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주어번역기</title>
+    <link rel="stylesheet" href="제주어번역기.css">
+    <script src="제주어번역기.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="headline">
+            <h1 id="제목">제주어번역기</h1>
+        </div>
+        <div> <pre> <p id="언어종류">방언                                                표준어</p> </pre> </div>
+
+        <div class="번역부모">
+            <div class="번역시작">
+                <img width="10%" src="./이미지/마이크.png" onclick="init()" id="음성인식"></img>    
+                <textarea name="번역할 언어" id="번역할언어" cols="27" rows="6.5"></textarea>
+            </div>
+
+        <img width="8%" height="5%" src="./이미지/화살표.png" id="교체" onclick="교체()"></img>
+            <div id="번역창"> <p id="번역된언어">번역</p> </div>   
+        </div>
+        <!-- <button type="button" onclick="번역()" id="번역버튼">번역하기</button> -->
+        <h1 id="설명">번역할 언어를 작성해주세요</h1>
+        
+    </div>
+    
+    <!-- 음성인식 -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+        
+        <script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/tAxzWl4Nw/";
+
+    async function createModel() {
+        const checkpointURL = URL + "model.json"; // model topology
+        const metadataURL = URL + "metadata.json"; // model metadata
+
+        const recognizer = speechCommands.create(
+            "BROWSER_FFT", // fourier transform type, not useful to change
+            undefined, // speech commands vocabulary feature, not useful for your models
+            checkpointURL,
+            metadataURL);
+
+        // check that model and metadata are loaded via HTTPS requests.
+        await recognizer.ensureModelLoaded();
+
+        return recognizer;
+    }
+
+    async function init() {
+        const recognizer = await createModel();
+        const classLabels = recognizer.wordLabels(); // 학습기킨 클래스들 가져옴
+        
+        recognizer.listen(result => {
+            const scores = result.scores; // probability of prediction for each class
+            // render the probability scores per class
+            for (let i = 0; i < classLabels.length; i++) {
+                console.log(classLabels[i] + ": " + result.scores[i].toFixed(2));
+                //labelContainer.childNodes[i].innerHTML = classPrediction;
+                if(result.scores[i].toFixed(2) > 0.85 && i != 0){
+                    document.getElementById("번역할언어").value = classLabels[i];
+                    setTimeout(() => recognizer.stopListening(), 300);
+                    번역();
+                }
+            }
+        }, {
+            includeSpectrogram: true, // in case listen should return result.spectrogram
+            probabilityThreshold: 0.75,
+            invokeCallbackOnNoiseAndUnknown: true,
+            overlapFactor: 0.50 // probably want between 0.5 and 0.75. More info in README
+        });
+    }
+    function 자동번역(){
+        번역();
+        console.log("test");
+    }
+    document.querySelector("#번역할언어").addEventListener("keyup", 자동번역)
+    
+</script>
+</body>
+</html>

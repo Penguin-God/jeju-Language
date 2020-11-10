@@ -1,0 +1,166 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}  /* css reset */
+
+#제목{
+    margin-top: 15%;
+    font-size: 300%;
+    text-align: center;
+    color: black;
+}
+
+html{
+    background-color: rgb(150, 150, 150);
+}
+/* 
+#번역된언어{
+    top: 0;
+    position: absolute;
+    font-size: 32px;
+    font-weight: 550;
+    color: black;
+    margin-left: 27.2%;
+    width: 20%;
+    height: 19vh;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.번역부모{
+    position: relative;
+    padding-left: 23%;
+    margin-top: 1%;
+} */
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.번역부모{
+    flex:1;
+    display: flex;
+    width: 70%;
+
+}
+.번역시작{
+    flex: 1;
+    display: flex;
+    /* flex-direction: column; */
+}
+#음성인식{
+    margin: auto;
+    bottom: 0px;
+    height: 3rem;
+    flex: 1;
+}
+#번역할언어{
+    flex: 10;
+    outline: none;
+}
+#번역창{
+    flex: 1;
+    background-color: white;
+}
+
+#번역할언어, #번역창{
+    border-radius: 3px;
+    border: 2px solid black;
+}
+
+#번역할언어, #번역된언어, #언어종류{
+    font-size: 200%;
+    font-weight: 600;
+}
+
+#교체{
+    margin: auto;
+}
+
+#설명{
+    margin-top: 2.5%;
+}
+
+/* #번역버튼{
+    margin-top: 1%;
+    width: 10%;
+    height: 6vh;
+    font-size: 150%;
+    margin-left: 45.5%;
+    color: white;
+    background-color: black;
+} */
+/* 
+#설명{
+    padding-top: 3%;
+    text-align: center;
+}
+
+#음성인식{
+    position: absolute;
+    top: 38%;
+    left: 44.2%;
+    background-color: #202020;
+    color: white;
+    width: 6%;
+    height: 6vh;
+    font-size: 150%;
+    font-weight: 200%;
+    outline: none;
+}
+
+#음성인식:hover{
+    background-color: #303030;
+}
+
+#번역할언어{
+    border-radius: 3px;
+    border: 2px solid black;
+    background-color: white;
+    font-size: 200%;
+    font-weight: 600;
+    outline: none;
+    margin-left: 9.9%;
+}
+
+#언어종류{
+    font-size: 200%;
+    font-weight: 600;
+    margin-left: 39%;
+    margin-top: 2%;
+}
+
+#교체{
+    top: 0;
+    margin-top: 9%;
+    margin-left: 47.1%;
+    position: absolute;
+    width: 6%;
+    height: 4vh;
+    font-size: 130%;
+    font-weight: 600;
+    background-color: black;
+    color: white;
+} */
