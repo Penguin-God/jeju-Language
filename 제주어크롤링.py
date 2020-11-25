@@ -19,10 +19,10 @@ Sentence_soup = BeautifulSoup(Sentence_res.text, "html5lib")
 문장_표준어들 = Sentence_soup.find_all("td", attrs = {"class" : "title"})
 
 for 언어 in 문장_표준어들:
-    표준어.append(언어.get_text())
+    표준어.append(" " + 언어.get_text())
 
 for 언어 in 문장_방언들:
-    방언.append(언어.get_text())
+    방언.append(" " + 언어.get_text())
 
 for i in range(len(표준어)):
     if(i % 2 == 0):
