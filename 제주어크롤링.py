@@ -8,9 +8,30 @@ User_Agent_head = {"User-Agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 tojson_방언 = OrderedDict()
 tojson_표준어 = OrderedDict()
 
-page = 1
 표준어 = []
 방언 = []
+
+Sentence_url = "https://www.jeju.go.kr/culture/dialect/lifeDialect.htm?&pageSize=100"
+Sentence_res = requests.get(Sentence_url, headers = User_Agent_head)
+Sentence_res.raise_for_status()
+Sentence_soup = BeautifulSoup(Sentence_res.text, "html5lib")
+문장_방언들 = Sentence_soup.find_all("a", attrs = {"class" : "view-history"})
+문장_표준어들 = Sentence_soup.find_all("td", attrs = {"class" : "title"})
+
+for 언어 in 문장_표준어들:
+    표준어.append(언어.get_text())
+
+for 언어 in 문장_방언들:
+    방언.append(언어.get_text())
+
+for i in range(len(표준어)):
+    if(i % 2 == 0):
+        표준어[i] = "NULL"
+for null in 표준어:
+        if(null == "NULL"):
+            표준어.remove("NULL")
+
+page = 1
 for page in range(1,73):
     url = "https://www.jeju.go.kr/culture/dialect/dictionary.htm?indexP=&pageSize=100&page={}".format(page)
     res = requests.get(url, headers = User_Agent_head)
@@ -25,7 +46,6 @@ for page in range(1,73):
     for 언어 in 방언들:
         방언.append(언어.get_text())
     page += 1
-
 
 for i in range(len(표준어)):
     tojson_방언[방언[i]] = 표준어[i]
