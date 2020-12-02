@@ -33,26 +33,7 @@ table {
 html{
     background-color: rgb(150, 150, 150);
 }
-/* 
-#번역된언어{
-    top: 0;
-    position: absolute;
-    font-size: 32px;
-    font-weight: 550;
-    color: black;
-    margin-left: 27.2%;
-    width: 20%;
-    height: 19vh;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 3px;
-}
 
-.번역부모{
-    position: relative;
-    padding-left: 23%;
-    margin-top: 1%;
-} */
 .container{
     display: flex;
     flex-direction: column;
@@ -79,6 +60,7 @@ html{
 #번역할언어{
     flex: 10;
     outline: none;
+    height: 25vh;
 }
 #번역창{
     flex: 1;

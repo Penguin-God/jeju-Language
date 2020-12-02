@@ -17,16 +17,17 @@
         <div class="번역부모">
             <div class="번역시작">
                 <img width="10%" src="./이미지/마이크.png" onclick="init()" id="음성인식"></img>    
-                <textarea name="번역할 언어" id="번역할언어" cols="27" rows="6.5"></textarea>
+                <!-- <input type = "text" name="번역할 언어" id="번역할언어" placeholder="번역창"></input> -->
+                <textarea name="번역할 언어" id="번역할언어" placeholder="번역창"></textarea>
             </div>
 
         <img width="8%" height="5%" src="./이미지/화살표.png" id="교체" onclick="교체()"></img>
             <div id="번역창"> <p id="번역된언어">번역</p> </div>   
         </div>
-        <!-- <button type="button" onclick="번역()" id="번역버튼">번역하기</button> -->
-        <h1 id="설명">번역할 언어를 작성해주세요</h1>
-        
+        <h1 id="설명">번역할 제주어를 작성해주세요</h1>
     </div>
+    
+
     
     <!-- 음성인식 -->
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
