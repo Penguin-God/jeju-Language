@@ -2,6 +2,7 @@ var 제주어사전 = {}
 var 방언사전 = {}
 var 표준어사전 = {}
 var 번역언어종류 = "방언"
+
 fetch("./방언.json") // read json
     .then(function(resp){
         return resp.json();
@@ -29,6 +30,7 @@ function 번역(){
         return;
     }
 
+    // 문장 번역 
     for(var i = 0; i < 번역할언어.length; i++){
         if(번역언어종류 == "방언"){
             if(" " + 번역할언어[i] in 제주어사전)
@@ -39,20 +41,25 @@ function 번역(){
         }
         번역된언어 += 번역할언어[i] + " "
     }
+    // 값 전달
     document.getElementById("번역된언어").innerHTML = 번역된언어
 }
 
 function 교체(){
     var 현재언어 = document.getElementById("언어종류").innerHTML;
-    if(현재언어 == "방언                                                표준어"){
-        document.getElementById("언어종류").innerHTML = "표준어                                                 방언"
+    if(번역언어종류 == "방언"){
+        //document.getElementById("언어종류").innerHTML = "표준어                                                 방언"
         제주어사전 = 표준어사전
         번역언어종류 = "표준어"
+        document.querySelector(".방언").innerHTML = "표준어"
+        document.querySelector(".표준어").innerHTML = "방언"
     }
     else{
-        document.getElementById("언어종류").innerHTML = "방언                                                표준어"
+        //document.getElementById("언어종류").innerHTML = "방언                                                표준어"
         제주어사전 = 방언사전
         번역언어종류 = "방언"
+        document.querySelector(".방언").innerHTML = "방언"
+        document.querySelector(".표준어").innerHTML = "표준어"
     }
     document.getElementById("번역할언어").value = ""
     document.getElementById("번역된언어").innerHTML = "번역"
