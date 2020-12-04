@@ -54,7 +54,6 @@ function 번역(){
 }
 
 function 교체(){
-    var 현재언어 = document.getElementById("언어종류").innerHTML;
     if(번역언어종류 == "방언"){
         //document.getElementById("언어종류").innerHTML = "표준어                                                 방언"
         제주어사전 = 표준어사전
