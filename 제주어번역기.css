@@ -77,6 +77,19 @@ html{
     font-weight: 600;
 }
 
+.방언{
+    margin-left: 30%;
+}
+
+.표준어{
+    margin-left: 32%;
+}
+
+#언어종류{
+    width: 100%;
+    display: flex;
+}
+
 #교체{
     margin: auto;
 }
