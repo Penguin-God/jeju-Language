@@ -25,7 +25,7 @@ function 번역(){
     var 번역할언어 = document.getElementById("번역할언어").value.split(" ")
     if(번역언어종류 == "방언"){
         if(" " + document.getElementById("번역할언어").value in 제주어사전 && 번역할언어.length > 1){
-            번역된언어 = 제주어사전[" " + document.getElementById("번역할언어").value]
+            번역된언어 = 표준어사전[document.getElementById("번역할언어").value]
             document.getElementById("번역된언어").innerHTML = 번역된언어
             return;
         }
